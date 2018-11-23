@@ -1,6 +1,6 @@
 const http = require('http');
 const path = require('path');
-const app = require('./server');
+const app = require('./app');
 
 const server = http.createServer(app);
 
@@ -12,7 +12,7 @@ if (process.env.ENV !== 'production') {
   const chokidar = require('chokidar'); // eslint-disable-line global-require
   let currentApp = app;
 
-  const watcher = chokidar.watch('./server.js', {
+  const watcher = chokidar.watch('./app.js', {
     cwd: path.resolve(__dirname),
   });
 
@@ -22,13 +22,13 @@ if (process.env.ENV !== 'production') {
 
   watcher.on('change', () => {
     console.log('Reload');
-    const modulePath = require.resolve('./server.js');
+    const modulePath = require.resolve('./app.js');
     if (!require.cache[modulePath]) {
       return;
     }
     delete require.cache[modulePath];
     server.removeListener('request', currentApp);
-    const newApp = require('./server'); // eslint-disable-line global-require
+    const newApp = require('./app'); // eslint-disable-line global-require
     server.on('request', newApp);
     currentApp = newApp;
   });

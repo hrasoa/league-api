@@ -4,14 +4,13 @@ const app = require('./server');
 
 const server = http.createServer(app);
 
-let currentApp = app;
-
 server.listen({ port: 4000 }, () => {
   console.log('🚀 Server ready');
 });
 
 if (process.env.ENV !== 'production') {
   const chokidar = require('chokidar'); // eslint-disable-line global-require
+  let currentApp = app;
 
   const watcher = chokidar.watch('./server.js', {
     cwd: path.resolve(__dirname),

@@ -1,0 +1,33 @@
+{
+  "name": "league-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint src",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hrasoa/league-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hrasoa/league-api/issues"
+  },
+  "homepage": "https://github.com/hrasoa/league-api#readme",
+  "dependencies": {
+    "apollo-server": "^2.2.2",
+    "apollo-server-express": "^2.2.2",
+    "chokidar": "^2.0.4",
+    "express": "^4.16.4",
+    "graphql": "^14.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  }
+}

@@ -8,7 +8,7 @@ server.listen({ port: 4000 }, () => {
   console.log('🚀 Server ready');
 });
 
-if (process.env.ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production') {
   const chokidar = require('chokidar'); // eslint-disable-line global-require
   let currentApp = app;
 

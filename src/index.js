@@ -4,30 +4,33 @@ const chokidar = require('chokidar');
 const app = require('./server');
 
 const server = http.createServer(app);
+const entry = './server.js';
 
 let currentApp = app;
-
-const watcher = chokidar.watch('./server.js', {
-  cwd: path.resolve(__dirname),
-});
 
 server.listen({ port: 4000 }, () => {
   console.log('🚀 Server ready');
 });
 
-watcher.on('ready', () => {
-  console.log('watch ready');
-});
+if (process.env.ENV !== 'production') {
+  const watcher = chokidar.watch(entry, {
+    cwd: path.resolve(__dirname),
+  });
 
-watcher.on('change', (filePath) => {
-  const modulePath = require.resolve(`./${filePath}`);
+  watcher.on('ready', () => {
+    console.log('Watch ready');
+  });
 
-  if (require.cache[modulePath]) {
-    delete require.cache[modulePath];
-  }
+  watcher.on('change', () => {
+    const modulePath = require.resolve(entry);
 
-  server.removeListener('request', currentApp);
-  const newApp = require('./server'); // eslint-disable-line global-require
-  server.on('request', newApp);
-  currentApp = newApp;
-});
+    if (require.cache[modulePath]) {
+      delete require.cache[modulePath];
+    }
+
+    server.removeListener('request', currentApp);
+    const newApp = require('./server'); // eslint-disable-line global-require
+    server.on('request', newApp);
+    currentApp = newApp;
+  });
+}

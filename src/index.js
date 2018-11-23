@@ -22,6 +22,7 @@ if (process.env.ENV !== 'production') {
   });
 
   watcher.on('change', () => {
+    console.log('Reload');
     const modulePath = require.resolve(entry);
 
     if (require.cache[modulePath]) {

@@ -24,11 +24,10 @@ if (process.env.ENV !== 'production') {
   watcher.on('change', () => {
     console.log('Reload');
     const modulePath = require.resolve(entry);
-
-    if (require.cache[modulePath]) {
-      delete require.cache[modulePath];
+    if (!require.cache[modulePath]) {
+      return;
     }
-
+    delete require.cache[modulePath];
     server.removeListener('request', currentApp);
     const newApp = require('./server'); // eslint-disable-line global-require
     server.on('request', newApp);

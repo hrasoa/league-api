@@ -4,7 +4,6 @@ const chokidar = require('chokidar');
 const app = require('./server');
 
 const server = http.createServer(app);
-const entry = './server.js';
 
 let currentApp = app;
 
@@ -13,7 +12,7 @@ server.listen({ port: 4000 }, () => {
 });
 
 if (process.env.ENV !== 'production') {
-  const watcher = chokidar.watch(entry, {
+  const watcher = chokidar.watch('./server.js', {
     cwd: path.resolve(__dirname),
   });
 
@@ -23,7 +22,7 @@ if (process.env.ENV !== 'production') {
 
   watcher.on('change', () => {
     console.log('Reload');
-    const modulePath = require.resolve(entry);
+    const modulePath = require.resolve('./server.js');
     if (!require.cache[modulePath]) {
       return;
     }

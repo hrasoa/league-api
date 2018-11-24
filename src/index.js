@@ -5,7 +5,7 @@ const app = require('./app');
 const server = http.createServer(app);
 
 server.listen({ port: 4000 }, () => {
-  console.log('🚀 Server ready');
+  console.log('🚀  Server ready');
 });
 
 if (process.env.NODE_ENV !== 'production') {
@@ -17,12 +17,12 @@ if (process.env.NODE_ENV !== 'production') {
   });
 
   watcher.on('ready', () => {
-    console.log('Watch ready');
+    console.log('👀  Watch ready');
   });
 
-  watcher.on('change', () => {
-    console.log('Reload');
-    const modulePath = require.resolve('./app.js');
+  watcher.on('change', (filePath) => {
+    console.log('🔁  Reloading ', filePath);
+    const modulePath = require.resolve(`./${filePath}`);
     if (!require.cache[modulePath]) {
       return;
     }

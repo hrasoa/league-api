@@ -1,5 +1,6 @@
 export default `
   type Player {
+    id: ID!
     name: String
     image: String
   }

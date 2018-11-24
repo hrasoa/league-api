@@ -1,7 +1,7 @@
-const { mergeSchemas } = require('graphql-tools');
-const playerSchema = require('./players');
+import { mergeSchemas } from 'graphql-tools';
+import playerSchema from './players';
 
-module.exports = mergeSchemas({
+export default mergeSchemas({
   schemas: [
     playerSchema,
   ],

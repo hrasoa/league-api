@@ -1,4 +1,4 @@
-module.exports = `
+export default `
   type Player {
     name: String
     image: String

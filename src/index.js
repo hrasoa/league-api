@@ -1,35 +1,15 @@
-const http = require('http');
-const path = require('path');
-const app = require('./app');
+import express from 'express';
+import bodyParser from 'body-parser';
+import { ApolloServer } from 'apollo-server-express';
+import schema from './shema';
 
-const server = http.createServer(app);
+const app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-server.listen({ port: 4000 }, () => {
-  console.log('🚀  Server ready');
+const server = new ApolloServer({ schema });
+server.applyMiddleware({ app });
+
+app.listen({ port: 4000 }, () => {
+  console.log('🚀  Server listening on port 4000'); // eslint-disable-line no-console
 });
-
-if (process.env.NODE_ENV !== 'production') {
-  const chokidar = require('chokidar'); // eslint-disable-line global-require
-  let currentApp = app;
-
-  const watcher = chokidar.watch('./app.js', {
-    cwd: path.resolve(__dirname),
-  });
-
-  watcher.on('ready', () => {
-    console.log('👀  Watch ready');
-  });
-
-  watcher.on('change', (filePath) => {
-    console.log('🔁  Reloading ', filePath);
-    const modulePath = require.resolve(`./${filePath}`);
-    if (!require.cache[modulePath]) {
-      return;
-    }
-    delete require.cache[modulePath];
-    server.removeListener('request', currentApp);
-    const newApp = require('./app'); // eslint-disable-line global-require
-    server.on('request', newApp);
-    currentApp = newApp;
-  });
-}

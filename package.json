@@ -6,7 +6,7 @@
   "scripts": {
     "start": "backpack",
     "lint": "eslint src",
-    "start:prod": "NODE_ENV=production node build/main.js",
+    "start:prod": "node build/main.js",
     "build": "backpack build"
   },
   "repository": {

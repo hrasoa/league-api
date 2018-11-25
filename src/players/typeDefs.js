@@ -4,6 +4,7 @@ export default `
     team_id: ID
     name: String
     image: String
+    pos: String
   }
 
   type Query {

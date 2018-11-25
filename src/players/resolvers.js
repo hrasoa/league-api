@@ -40,7 +40,7 @@ export default {
   Query: {
     players: () => players,
     playerById: (root, args) => {
-      const player = players.filter(p => p.id === args.id);
+      const player = players.filter(p => p.id === parseInt(args.id, 10));
       return player.length ? player[0] : null;
     },
   },

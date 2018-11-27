@@ -7,4 +7,4 @@ const schema = makeExecutableSchema({
   resolvers,
 });
 
-export default schema;
+module.exports = schema;

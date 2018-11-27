@@ -1,4 +1,4 @@
-export default `
+module.exports = `
   type Player {
     id: ID!
     team_id: ID

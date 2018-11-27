@@ -9,7 +9,7 @@ const players = [
   {
     id: 2,
     team_id: 1,
-    name: 'Manuel Neuer',
+    name: 'Manuel Neurrr',
     image: 'https://pbs.twimg.com/profile_images/888346166546640896/BlBK7f2j_400x400.jpg',
     pos: 'gk',
   },
@@ -36,7 +36,7 @@ const players = [
   },
 ];
 
-export default {
+module.exports = {
   Query: {
     players: () => players,
     playerById: (root, args) => {

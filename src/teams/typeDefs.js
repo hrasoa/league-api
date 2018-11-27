@@ -1,4 +1,4 @@
-export default `
+module.exports = `
   type Team {
     id: ID!
     name: String

@@ -34,7 +34,6 @@ watcher.on('change', (filePath) => {
 
 function clearCache(moduleId) {
   const mod = { ...require.cache[moduleId] };
-  delete require.cache[moduleId];
   if (mod.parent) {
     console.log('- Clear', moduleId);
     delete require.cache[moduleId];

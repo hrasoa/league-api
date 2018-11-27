@@ -8,7 +8,7 @@ let currentApp = app;
 const server = http.createServer(app);
 
 server.listen({ port: 4000 }, () => {
-  console.log('🚀  Server ready');
+  console.log('🚀  Server ready.');
 });
 
 const watcher = chokidar.watch('.', {
@@ -17,11 +17,11 @@ const watcher = chokidar.watch('.', {
 });
 
 watcher.on('ready', () => {
-  console.log('- Watch ready');
+  console.log('👀  Watch ready...');
 });
 
 watcher.on('change', (filePath) => {
-  console.log('- Changed ', filePath);
+  console.log('Updated modules:');
   const moduleId = require.resolve(`./${filePath}`);
   if (!require.cache[moduleId]) {
     return;
@@ -31,12 +31,13 @@ watcher.on('change', (filePath) => {
   const newApp = require('./app'); // eslint-disable-line global-require
   server.on('request', newApp);
   currentApp = newApp;
+  console.log('Update applied.');
 });
 
 function clearCache(moduleId) {
   const mod = { ...require.cache[moduleId] };
   if (mod.parent) {
-    console.log('- Clear', moduleId);
+    console.log('- ', moduleId);
     delete require.cache[moduleId];
     clearCache(mod.parent.id);
   }

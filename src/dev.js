@@ -13,7 +13,7 @@ if (process.env.NODE_ENV !== 'production') {
   let currentApp = app;
 
   const watcher = chokidar.watch('.', {
-    ignored: 'dev.js',
+    ignored: path.basename(__filename),
     cwd: path.resolve(__dirname),
   });
 

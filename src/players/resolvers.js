@@ -2,14 +2,14 @@ const players = [
   {
     id: 1,
     team_id: 1,
-    name: 'Mats hummelsssssss',
+    name: 'Mats hummels',
     image: 'https://pbs.twimg.com/profile_images/976109234906640384/YQJK5Ilz_400x400.jpg',
     pos: 'cb',
   },
   {
     id: 2,
     team_id: 1,
-    name: 'Manuel Neurrr',
+    name: 'Manuel Neur',
     image: 'https://pbs.twimg.com/profile_images/888346166546640896/BlBK7f2j_400x400.jpg',
     pos: 'gk',
   },

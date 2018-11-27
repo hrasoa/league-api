@@ -39,7 +39,7 @@ const players = [
 module.exports = {
   Query: {
     players: () => players,
-    playerById: (root, args) => {
+    playerById: (_, args) => {
       const player = players.filter(p => p.id === parseInt(args.id, 10));
       return player.length ? player[0] : null;
     },

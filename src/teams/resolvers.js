@@ -19,7 +19,7 @@ const teams = [
 module.exports = {
   Query: {
     teams: () => teams,
-    teamById: (root, args) => {
+    teamById: (_, args) => {
       const team = teams.filter(t => t.id === parseInt(args.id, 10));
       return team.length ? team[0] : null;
     },

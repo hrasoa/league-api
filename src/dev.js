@@ -12,24 +12,34 @@ if (process.env.NODE_ENV !== 'production') {
   const chokidar = require('chokidar'); // eslint-disable-line global-require,import/no-extraneous-dependencies
   let currentApp = app;
 
-  const watcher = chokidar.watch('./app.js', {
+  const watcher = chokidar.watch('.', {
+    ignored: 'dev.js',
     cwd: path.resolve(__dirname),
   });
 
   watcher.on('ready', () => {
-    console.log('👀  Watch ready');
+    console.log('- Watch ready');
   });
 
   watcher.on('change', (filePath) => {
-    console.log('🔁  Reloading ', filePath);
-    const modulePath = require.resolve(`./${filePath}`);
-    if (!require.cache[modulePath]) {
+    console.log('- Changed ', filePath);
+    const moduleId = require.resolve(`./${filePath}`);
+    if (!require.cache[moduleId]) {
       return;
     }
-    delete require.cache[modulePath];
+    clearCache(moduleId);
     server.removeListener('request', currentApp);
     const newApp = require('./app'); // eslint-disable-line global-require
     server.on('request', newApp);
     currentApp = newApp;
   });
+}
+
+function clearCache(moduleId) {
+  const mod = { ...require.cache[moduleId] };
+  console.log('- Clear', moduleId);
+  delete require.cache[moduleId];
+  if (mod.parent && mod.parent.id !== '.') {
+    clearCache(mod.parent.id);
+  }
 }

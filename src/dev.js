@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const http = require('http');
 const path = require('path');
 const chokidar = require('chokidar'); // eslint-disable-line import/no-extraneous-dependencies

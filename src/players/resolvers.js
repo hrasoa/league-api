@@ -2,7 +2,7 @@ const players = [
   {
     id: 1,
     team_id: 1,
-    name: 'Mats hummels',
+    name: 'Mats Hummels',
     image: 'https://pbs.twimg.com/profile_images/976109234906640384/YQJK5Ilz_400x400.jpg',
     pos: 'cb',
   },

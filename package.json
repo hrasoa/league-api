@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/hrasoa/league-api#readme",
   "dependencies": {
-    "apollo-server-express": "^2.2.3",
+    "apollo-server-express": "^2.2.4",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "graphql": "^14.0.2",

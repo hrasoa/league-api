@@ -4,11 +4,7 @@ const playerSchema = require('./players');
 const teamSchema = require('./teams');
 
 module.exports = mergeSchemas({
-  schemas: [
-    playerSchema,
-    teamSchema,
-    linkTypeDefs,
-  ],
+  schemas: [playerSchema, teamSchema, linkTypeDefs],
   resolvers: {
     Player: {
       team: {

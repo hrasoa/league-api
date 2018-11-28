@@ -20,7 +20,7 @@ watcher.on('ready', () => {
   console.log('👀  Watch ready...');
 });
 
-watcher.on('change', (filePath) => {
+watcher.on('change', filePath => {
   console.log('Updated modules:');
   const moduleId = require.resolve(`./${filePath}`);
   if (!require.cache[moduleId]) {

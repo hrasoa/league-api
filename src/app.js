@@ -1,7 +1,7 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const { ApolloServer } = require('apollo-server-express');
-const schema = require('./shema');
+import express from 'express';
+import bodyParser from 'body-parser';
+import { ApolloServer } from 'apollo-server-express';
+import schema from './shema';
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -10,4 +10,4 @@ app.use(bodyParser.json());
 const server = new ApolloServer({ schema });
 server.applyMiddleware({ app });
 
-module.exports = app;
+export default app;

@@ -41,7 +41,7 @@ const players = [
   },
 ];
 
-module.exports = {
+export default {
   Query: {
     players: () => players,
     playerById: (_, args) => {

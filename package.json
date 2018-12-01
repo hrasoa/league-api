@@ -5,9 +5,9 @@
   "main": "src/index.js",
   "scripts": {
     "lint": "eslint src && prettier --loglevel=error --debug-check src/**/*.js",
-    "start": "node src/dev.js",
+    "start": "babel-node src/dev.js",
     "start:prod": "NODE_ENV=production node dist/main.js",
-    "build": "webpack -p --mode='production' --progress --target='node'"
+    "build": "NODE_ENV=production webpack -p"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,11 @@
     "graphql-tools": "^4.0.3"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.1.6",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-import-graphql": "^2.6.2",
     "chokidar": "^2.0.4",
     "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",

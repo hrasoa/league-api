@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
-const http = require('http');
-const path = require('path');
-const chokidar = require('chokidar'); // eslint-disable-line import/no-extraneous-dependencies
-const app = require('./app');
+import http from 'http';
+import path from 'path';
+import chokidar from 'chokidar'; // eslint-disable-line import/no-extraneous-dependencies
+import app from './app';
 
 let currentApp = app;
 const server = http.createServer(app);

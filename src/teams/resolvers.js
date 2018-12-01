@@ -19,7 +19,7 @@ const teams = [
   },
 ];
 
-module.exports = {
+export default {
   Query: {
     teams: () => teams,
     teamById: (_, args) => {

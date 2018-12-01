@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import http from 'http';
 import path from 'path';
-import chokidar from 'chokidar'; // eslint-disable-line import/no-extraneous-dependencies
+import chokidar from 'chokidar';
 import app from './app';
 
 let currentApp = app;

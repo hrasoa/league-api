@@ -28,7 +28,7 @@ watcher.on('change', filePath => {
   }
   clearCache(moduleId);
   server.removeListener('request', currentApp);
-  const newApp = require('./app'); // eslint-disable-line global-require
+  const newApp = require('./app').default; // eslint-disable-line global-require
   server.on('request', newApp);
   currentApp = newApp;
   console.log('Update applied.');

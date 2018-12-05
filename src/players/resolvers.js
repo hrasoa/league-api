@@ -68,13 +68,13 @@ const players = [
 export default {
   Query: {
     players: (_, args) => {
-      const cursorIndex = args.after
-        ? players.findIndex(player => player.id === args.after) + 1
-        : null;
+      const cursorIndex =
+        players.findIndex(player => player.id === args.after) + 1;
       const data = players.slice(
-        cursorIndex || 0,
-        cursorIndex ? cursorIndex + args.first : players.length
+        cursorIndex,
+        (cursorIndex || 0) + (args.first || players.length)
       );
+      const endCursor = data[data.length - 1].id;
       return {
         edges: data.map(player => ({
           cursor: player.id,
@@ -82,8 +82,8 @@ export default {
         })),
         totalCount: data.length,
         pageInfo: {
-          endCursor: data[data.length - 1].id,
-          hasNextPage: true,
+          endCursor,
+          hasNextPage: endCursor !== players[players.length - 1].id,
         },
       };
     },

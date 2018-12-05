@@ -72,7 +72,7 @@ export default {
         players.findIndex(player => player.id === args.after) + 1;
       const data = players.slice(
         cursorIndex,
-        (cursorIndex || 0) + (args.first || players.length)
+        cursorIndex + (args.first || players.length)
       );
       const endCursor = data[data.length - 1].id;
       return {

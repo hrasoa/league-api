@@ -18,7 +18,8 @@
     "build": "NODE_ENV=production backpack build",
     "lint": "eslint src && prettier --loglevel=error --debug-check src/**/*.js",
     "start": "backpack",
-    "start:prod": "NODE_ENV=production node build/main.js"
+    "start:prod": "NODE_ENV=production node build/main.js",
+    "prestart": "rimraf build"
   },
   "dependencies": {
     "apollo-server-express": "^2.3.1",

@@ -1,3 +1,5 @@
+import paginate from '../paginate';
+
 const teams = [
   {
     id: '1',
@@ -21,7 +23,7 @@ const teams = [
 
 export default {
   Query: {
-    teams: () => teams,
+    teams: (_, args) => paginate(teams, args),
     teamById: (_, args) => {
       const team = teams.filter(t => t.id === args.id);
       return team.length ? team[0] : null;

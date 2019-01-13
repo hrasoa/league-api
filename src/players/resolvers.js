@@ -1,3 +1,5 @@
+import paginate from '../paginate';
+
 const players = [
   {
     id: 'player-1',
@@ -67,26 +69,7 @@ const players = [
 
 export default {
   Query: {
-    players: (_, args) => {
-      const cursorIndex =
-        players.findIndex(player => player.id === args.after) + 1;
-      const data = players.slice(
-        cursorIndex,
-        cursorIndex + (args.first || players.length)
-      );
-      const endCursor = data[data.length - 1].id;
-      return {
-        edges: data.map(player => ({
-          cursor: player.id,
-          node: player,
-        })),
-        totalCount: data.length,
-        pageInfo: {
-          endCursor,
-          hasNextPage: endCursor !== players[players.length - 1].id,
-        },
-      };
-    },
+    players: (_, args) => paginate(players, args),
     playerById: (_, args) => {
       const player = players.filter(p => p.id === args.id);
       return player.length ? player[0] : null;

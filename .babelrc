@@ -1,13 +1,3 @@
 {
-  "presets": [
-    [
-      "@babel/preset-env",
-      {
-        "targets": {
-          "node": true
-        }
-      }
-    ]
-  ],
-  "plugins": ["import-graphql"]
+  "presets": ["backpack-core/babel"]
 }

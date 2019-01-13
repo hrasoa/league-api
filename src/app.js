@@ -11,3 +11,5 @@ const server = new ApolloServer({ schema });
 server.applyMiddleware({ app });
 
 export default app;
+
+export { server as apolloServer };

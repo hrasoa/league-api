@@ -5,7 +5,7 @@
   "plugins": ["prettier"],
   "extends": ["airbnb-base", "plugin:prettier/recommended"],
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": "warn",
     "no-use-before-define": ["error", { "functions": false }]
   }
 }

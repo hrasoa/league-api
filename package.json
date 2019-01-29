@@ -22,20 +22,20 @@
     "prestart": "rimraf build"
   },
   "dependencies": {
-    "apollo-server-express": "^2.3.1",
+    "apollo-server-express": "^2.3.3",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "graphql": "^14.1.1",
-    "graphql-tools": "^4.0.3"
+    "graphql-tools": "^4.0.4"
   },
   "devDependencies": {
     "backpack-core": "^0.8.3",
     "eslint": "^5.12.1",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-prettier": "^3.5.0",
-    "eslint-plugin-import": "^2.14.0",
+    "eslint-config-prettier": "^3.6.0",
+    "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-prettier": "^3.0.1",
-    "prettier": "^1.15.3",
+    "prettier": "^1.16.1",
     "rimraf": "^2.6.3"
   }
 }
